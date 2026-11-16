@@ -4,7 +4,7 @@ using DocumentFormat.OpenXml.Spreadsheet;
 using OfficeIMO;
 using OfficeIMO.Excel;
 
-namespace XlsxToXlsbLambda;
+namespace XlsxToXlsb;
 
 /// <summary>What the converter had to change before OfficeIMO would write the workbook as .xlsb.</summary>
 public sealed record ConversionAdjustments

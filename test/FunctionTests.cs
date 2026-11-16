@@ -1,3 +1,4 @@
+using XlsxToXlsb;
 using Amazon.Lambda.TestUtilities;
 
 namespace XlsxToXlsbLambda.Tests;

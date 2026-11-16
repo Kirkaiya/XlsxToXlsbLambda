@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    xlsx2xlsb: command-line front end to XlsxToXlsb.Core, bundled in the Evolve storage agent's
+    container image. Publish with the linux-arm64 profile (Bedrock AgentCore runs arm64 only):
+
+      dotnet publish src/xlsx2xlsb/xlsx2xlsb.csproj -p:PublishProfile=linux-arm64
+
+    The profile makes a self-contained, ReadyToRun, untrimmed folder publish: no .NET runtime
+    is needed in the image.
+  -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>xlsx2xlsb</AssemblyName>
+    <RootNamespace>XlsxToXlsb.Cli</RootNamespace>
+    <Version>1.0.0</Version>
+    <!-- The agent image (python:3.11-slim) has no libicu. Nothing in the conversion depends on culture data. -->
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="XlsxToXlsbLambda.Tests" />
+    <ProjectReference Include="..\XlsxToXlsb.Core\XlsxToXlsb.Core.csproj" />
+  </ItemGroup>
+</Project>
